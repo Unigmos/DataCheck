@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -18,7 +18,7 @@ func main() {
 	ratio_data := ratio(file_datas)
 
 	selected_data := select_content(ratio_data)
-	fmt.Println(selected_data)
+
 	write_text(selected_data)
 }
 
@@ -50,15 +50,15 @@ func search_files(search_path string) map[string]int {
 	office := 0
 
 	for _, file_data := range file_datas {
-		fmt.Printf("%s: %d\n", file_data.Name(), file_data.Size())
+		// fmt.Printf("%s: %d\n", file_data.Name(), file_data.Size())
 		ext_name := filepath.Ext(file_data.Name())
-		fmt.Println(ext_name)
+		// fmt.Println(ext_name)
 		// 拡張子別にデータ量加算
-		if ext_name == ".png" || ext_name == ".jpg" {
+		if ext_name == ".png" || ext_name == ".jpg" || ext_name == ".jpeg" {
 			image += int(file_data.Size())
 		} else if ext_name == ".mp4" || ext_name == ".avi" {
 			movie += int(file_data.Size())
-		} else if ext_name == ".mp3" {
+		} else if ext_name == ".mp3" || ext_name == ".wav" {
 			music += int(file_data.Size())
 		} else if ext_name == ".py" || ext_name == ".go" {
 			program += int(file_data.Size())
@@ -103,7 +103,7 @@ func ratio(dict_data map[string]int) map[string]float64 {
 		"オフィスファイル": office_value / sum * 100,
 	}
 
-	fmt.Println(new_dict)
+	// fmt.Println(new_dict)
 
 	return new_dict
 }
@@ -120,7 +120,7 @@ func select_content(ratio_data map[string]float64) map[string]float64 {
 		}
 	}
 
-	fmt.Println(select_dict)
+	// fmt.Println(select_dict)
 
 	return select_dict
 }
