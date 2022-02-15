@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
+	"strconv"
 )
 
 // メイン処理
@@ -17,6 +19,7 @@ func main() {
 
 	selected_data := select_content(ratio_data)
 	fmt.Println(selected_data)
+	write_text(selected_data)
 }
 
 // パス読み込み
