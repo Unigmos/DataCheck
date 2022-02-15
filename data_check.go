@@ -122,7 +122,15 @@ func select_content(ratio_data map[string]float64) map[string]float64 {
 	return select_dict
 }
 
-/*func write_text() {
+func write_text(selected_data map[string]float64) {
+	text_file, err := os.Create("log.txt")
+	if err != nil {
+		panic(err)
+	}
 
+	defer text_file.Close()
+
+	for key, value := range selected_data {
+		text_file.WriteString(key + ":" + strconv.FormatFloat(value, 'f', 2, 64) + "%\n")
+	}
 }
-*/
