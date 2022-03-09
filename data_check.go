@@ -22,7 +22,7 @@ func main() {
 	write_text(selected_data)
 }
 
-// パス読み込み
+// ファイル読み込み
 func read_path(path_data string) string {
 	data, err := ioutil.ReadFile(path_data)
 	if err != nil {
@@ -80,7 +80,7 @@ func search_files(search_path string) map[string]int {
 	return dict
 }
 
-// 比率を求める
+// ファイル比率計算
 func ratio(dict_data map[string]int) map[string]float64 {
 	sum := 0.0
 	for _, value := range dict_data {
